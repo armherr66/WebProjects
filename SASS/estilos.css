@@ -1,0 +1,16 @@
+.link, section a, header a {
+  display: inline-block;
+  padding: 10px;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+header a {
+  background: #1b2d87;
+}
+
+section a {
+  background: #9023b5;
+}
+
+/*# sourceMappingURL=estilos.css.map */
