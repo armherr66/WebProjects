@@ -1,0 +1,39 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.contenedor{
+	color: #fff;
+	background: #000;
+	width: 700px;
+	margin: 20px auto;
+	text-align: center;
+}
+
+header{
+	background: #272727;
+	padding: 10px 0;
+}
+
+.columna{
+	width: 350px;
+	padding: 20px;
+	float: left;
+}
+
+#col1{
+	min-height: 200px;
+	background: #ee9923;
+}
+
+#col2{
+	background: #237aed;
+}
+
+footer{
+	clear: both;
+	background: #34ed60;
+	padding: 20px;
+}

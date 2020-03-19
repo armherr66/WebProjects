@@ -1,0 +1,34 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: #272727;
+}
+
+h1{
+	color: #fff;
+	font-family: Arial;
+	text-align: center;
+	margin: 20px 0 0 0;
+}
+
+.galeria{
+	width: 100%;
+}
+
+.galeria img{
+	/*Quitar el margen entre imágenes*/
+	vertical-align: top;
+	width: 395px;
+	margin: 20px;
+	padding: 5px;
+	border: 1px solid #484848;
+	opacity: .5;
+}
+
+.galeria img:hover{
+	opacity: 1;
+	border: 1px solid #fff;
+}

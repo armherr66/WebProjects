@@ -1,0 +1,18 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.caja{
+	width: 200px;
+	height: 200px;
+	background: #21295c;
+	transition: all 5s ease;
+	/* ease, linear, ease-in, ease-out, ease-in-out */
+	/*transition-delay: 2s;*/
+}
+
+.caja:hover{
+	background: #9eb3c2;
+	transform: rotate(180deg);
+}
