@@ -1,0 +1,160 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Roboto', Arial;
+	background: #000 url('/img/fondo.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.contenedor{
+	margin: auto;
+	width: 90%;
+	max-width: 1000px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+header{
+	width: 100%;
+	padding: 50px 0px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header nav a{
+	color: #fff;
+	text-decoration: none;
+	margin-right: 10px;
+	font-size: 18px;
+	display: inline-block;
+	padding: 10px;
+}
+
+header nav a:hover{
+	background: rgba(200,200,200,0.2);
+}
+
+.main{
+	background: #fff;
+	padding: 20px;
+	width: 70%;
+}
+
+.main article .thumb{
+	margin-bottom: 20px;
+}
+
+.main article .thumb img{
+	width: 100%;
+	vertical-align: top;
+}
+
+.main article h2{
+	margin-bottom: 20px;
+	font-weight: normal;
+	font-size: 32px;
+}
+
+.main article p{
+	margin-bottom: 10px;
+	font-size: 14px;
+	line-height: 27px;
+}
+
+aside{
+	width: 30%;
+	background: #537dca;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+aside .ad{
+	font-size: 30px;
+	text-align: center;
+	color: #fff;
+	padding: 50px 0;
+	background: #4264a2;
+}
+
+footer{
+	margin: 20px 0;
+	background: rgba(200,200,200,0.2);
+	padding: 20px;
+	width: 100%;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+}
+
+footer .redes a{
+	color: #fff;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+@media screen and (max-width: 800px) {
+	.main{
+		width: 100%;
+	}
+
+	aside{
+		width: 100%;
+		flex-direction: row;
+	}
+
+	aside .ad{
+		width: 40%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	header{
+		flex-direction: column;
+		padding-bottom: 20px;
+	}
+
+	header nav{
+		width: 100%;
+		background: rgba(200,200,200,.2);
+		text-align: center;
+	}
+
+	header .logo{
+		margin-bottom: 20px;
+	}
+
+	header nav a{
+		margin: 0 20px;
+	}
+
+	footer{
+		flex-direction: column;
+		text-align: center;
+	}
+
+	footer .autor{
+		order: 2;
+	}
+
+	footer .redes{
+		order: 1;
+		margin-bottom: 20px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	aside{
+		display: none;
+	}
+}
