@@ -1,4 +1,5 @@
 /******************************************
+ * 
  * VARIABLES AND DATA TYPES
  */
 
@@ -16,6 +17,7 @@ let job;
 
 
 /******************************************
+ * 
  * VARIABLE MUTATION AND TYPE COERCION
  */
 
@@ -31,6 +33,7 @@ console.log(firstName + ' is a ' + age + ' year old ' + job + '. Is he married? 
 
 
 /******************************************
+ * 
  * BASIC OPERATORS
  */
 
@@ -55,6 +58,7 @@ console.log(typeof johnOlder);
 
 
 /******************************************
+ * 
  * OPERATOR PRECEDENCE
  */
 
@@ -79,6 +83,7 @@ x++;
 
 
 /******************************************
+ * 
  * IF / ELSE STATEMENTS
  */
 
@@ -93,6 +98,7 @@ else {
 
 
 /******************************************
+ * 
  * BOOLEAN LOGIC
  */
 
@@ -111,6 +117,7 @@ else {
 
 
 /******************************************
+ * 
  * TERNARY OPERATOR AND SWITCH STATEMENT
  */
 
@@ -140,6 +147,7 @@ switch (job) {
 
 
 /******************************************
+ * 
  * TRUTHY AND FALSY VALUES
  */
 
