@@ -139,7 +139,7 @@ const restaurant = {
 // // Can be used wherever a list of elements separated by comma is expected
 // console.log(...newArr); // => 1 2 7 8 9
 
-// // Create new array with existing array and new elements
+// // Create a new array with existing array and new elements
 // const newMenu = [...restaurant.mainMenu, 'Carne'];
 
 // // Copy array
@@ -153,11 +153,12 @@ const restaurant = {
 // const letters = [...str, ' ', 'S.'];
 // console.log(letters); // => Array(9) [ "A", "r", "m", "a", "n", "d", "o", " ", "S." ]
 
+// // Using the spread operator with function parameters
 // //const ingredients = [prompt("Let's make pasta! Ingredient 1?"), prompt("Ingredient 2?"), prompt("Ingredient 3?")];
 // //restaurant.orderPasta(...ingredients);
 
 // // Expanding Objects
-// const newRestaurant = { foundedIn: 1995, ...restaurant, founder: 'Armando H' }
+// const newRestaurant = { foundedIn: 1995, ...restaurant, founder: 'Armando H' };
 
 // // Creating copies
 // const restaurantCopy = { ...restaurant };
@@ -189,11 +190,11 @@ const restaurant = {
 //   for (let i = 0; i < numbers.length; i++)
 //     sum += numbers[i];
 //   console.log(sum);
-// }
+// };
 
 // add(2, 3);
-// add(5, 3, 7, 2)
-// add(8, 2, 5, 3, 2, 1, 4)
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
 
 // // Send an array to the function
 // const x = [23, 5, 7];
@@ -253,3 +254,196 @@ const restaurant = {
 
 // console.log(rest1);
 // console.log(rest2);
+
+
+/******************************************
+ *
+ * THE FOR-OF LOOP
+ *
+ */
+
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// for (const item of menu) console.log(item);
+
+// // .entries() returns an array for each element containing the index and the value
+// for (const item of menu.entries()) {
+//   console.log(item); // => Array[0, "Focaccia"]
+// }
+
+// // Get the index of the element by destructuring
+// for (const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`); // => 1: Focaccia
+// }
+
+
+/******************************************
+ *
+ * ENHANCED OBJECT LITERALS
+ *
+ */
+
+// // 1. Variables can be set as object properties
+// const a = {
+//   one: "1",
+//   two: "2"
+// };
+
+// const b = {
+//   a,
+//   blue: "azul",
+//   red: "rojo"
+// };
+
+// console.log(b.a.one); // => 1
+
+// // 2. Methods don't need to have the "function" keyword
+// const c = {
+//   ts: "Taylor Swift",
+//   fearless: "Fearless",
+//   goOnTour() {
+//     return this.fearless;
+//   }
+// };
+
+// // 3. Property names can be computed
+// const d = {
+//   ['album-1']: 'TS',
+//   [`album-${1 + 1}`]: 'Fearless'
+// }
+
+// console.log(d['album-2']); // => Fearless
+
+
+/******************************************
+ *
+ * OPTIONAL CHAINING
+ *
+ */
+
+// // Validating a property exists before using it (Old way)
+// if (restaurant.openingHours.mon)
+//   console.log(restaurant.openingHours.mon.open);
+
+// // Optional Chaining: If a property doesn't exist, "undefined" is returned immediatly
+// console.log(restaurant.openingHours?.mon?.open); // => undefined instead of an error
+
+// // Verify if a method exists before invoking it
+// console.log(restaurant.order?.(0, 1) ?? "Method doesn't exist"); // => ["Focaccia", "Pasta"]
+
+// // Using optional chaining on arrays
+// const users = [
+//   { name: 'Armando', email: 'arm_herr66@hotmail.com' }
+// ];
+// console.log(users[0]?.name ?? "Users array empty"); // => Armando
+
+
+/******************************************
+ *
+ * LOOPING OBJECTS: OBJECT KEYS, VALUES AND ENTRIES
+ *
+ */
+
+// // Keys = Property Names
+// const properties = Object.keys(restaurant.openingHours);
+// console.log(properties); // => Array(3) [ "thu", "fri", "sat" ]
+
+// for (const day of Object.keys(restaurant.openingHours)) {
+//   console.log(day);
+// }
+
+// // Values
+// const values = Object.values(restaurant.openingHours);
+
+// // Entire object
+// const entries = Object.entries(restaurant.openingHours);
+// console.log(entries);
+
+// for (const [day, { open, close }] of entries) {
+//   console.log(`On ${day} we open at ${open} and close at ${close}.`);
+// }
+
+
+/******************************************
+ *
+ * SETS
+ *
+ */
+
+// // Data structure without duplicate values
+// const ordersSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pizza', 'Pasta']);
+
+// // Get the size of a set
+// ordersSet.size; // => 3
+
+// // Look for element in set
+// ordersSet.has('Pizza'); // => true
+
+// // Add and remove elements
+// ordersSet.add('Garlic Bread');
+// ordersSet.delete('Pizza');
+// ordersSet.clear() // => Deletes all the elements
+
+// // Convert set to array
+// const ordersArray = [...ordersSet];
+
+
+/******************************************
+ *
+ * MAPS
+ *
+ */
+
+// // The key can be of any type
+// const rest = new Map();
+// rest.set('name', 'Classico Italiano');
+// rest.set(1, 'Fireze, Italy');
+// rest.set(2, 'Lisbon, Portugal');
+// rest.set(true, 'We are open');
+// rest.set(false, 'We are closed');
+
+// // The method set returns the updated map
+// rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian']).set('open', 11).set('close', 23);
+
+// // Query the map
+// console.log(rest.get('name'));
+// console.log(rest.get(true));
+
+// // Practical example
+// const time = 8;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+// // More methods
+// console.log(rest.has('categories'));
+// rest.delete(2);
+// rest.size;
+// // rest.clear();
+
+// const array = [1, 2];
+// rest.set(array, 'Test');
+// rest.get(array);
+// console.log(rest);
+
+// const question = new Map([
+//   ['question', 'What is the best programming language in the world?'],
+//   [1, 'C'],
+//   [2, 'Java'],
+//   [3, 'JavaScript'],
+//   ['correct', 3],
+//   [true, 'Correct! 🎉'],
+//   [false, 'Try again']
+// ]);
+// console.log(question);
+
+// // Convert object to map
+// const hoursMap = new Map(Object.entries(restaurant.openingHours));
+// console.log(hoursMap);
+
+// // Iterating through maps
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
+// const answer = Number(prompt('Your answer'));
+// console.log(answer);
+
+// // Convert map to array
+// console.log([...question]);
