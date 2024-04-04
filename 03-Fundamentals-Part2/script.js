@@ -34,8 +34,31 @@ const calcAgeExp = function (birthYear) {
 calcAgeExp(1971);
 
 // Arrow function
+// 1 parameter
 const calcAgeArrow = birthYear => 2020 - birthYear;
+// Multiple parameters
 const calcAgeMultiple = (firstName, birthYear) => `${firstName}'s birthyear is ${birthYear}`;
+// Multiple operations
+const yearsUntilRetirement = birthYear => {
+    const age = 2024 - birthYear;
+    const retirement = 65 - age;
+    return retirement;
+}
+
+// Functions calling other functions
+function cutFruitPieces(fruit) {
+    return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+    const applePieces = cutFruitPieces(apples);
+    const orangePieces = cutFruitPieces(oranges);
+
+    const juice = `Juice with ${applePieces} pieces of apple and ${orangePieces} pieces of orange.`;
+    return juice;
+}
+
+console.log(fruitProcessor(2, 3)); // Juice with 8 pieces of apple and 12 pieces of orange.
 
 
 /******************************************
@@ -85,3 +108,59 @@ armando.firstName;
 armando['lastName']; // used when computation needed
 armando.calcAge()
 armando['calcAge']();
+
+
+/******************************************
+ *
+ * LOOPS
+ *
+ */
+
+// The for loop
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights repetition ${rep} 🏋🏼‍♂️`);
+}
+
+// Loop through arrays
+const armandoArray = [
+    'Armando',
+    'Herrera',
+    1995,
+    'SDET',
+    ['Alejandro', 'Brenda', 'Mary', 'Armando']
+];
+
+const types = [];
+
+for (let i = 0; i < armandoArray.length; i++) {
+    console.log(armandoArray[i]);
+    types.push(typeof armandoArray[i]);
+}
+
+// Continue and Break
+for (let i = 0; i < armandoArray.length; i++) {
+    if (typeof armandoArray[i] !== 'string') continue; // jumps to the next iteration
+    if (typeof armandoArray[i] === 'number') break; // exits the loop
+    types.push(typeof armandoArray[i]);
+}
+
+// Loop backwards
+for (let i = armandoArray.length - 1; i >= 0; i--) {
+    console.log(i, armandoArray[i]);
+}
+
+// Loops in loops
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`----- Starting exercise ${exercise}`);
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifting weights repetition ${rep} 🏋🏽‍♂️`);
+    }
+}
+
+// The while loop
+let rep = 1;
+while (rep <= 10) {
+    console.log(`Lifting weights repetition ${rep} 🏋🏼‍♂️`);
+    i++;
+}
