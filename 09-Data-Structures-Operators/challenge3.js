@@ -1,3 +1,6 @@
+///////////////////////////////////////
+// Coding Challenge #3
+
 /* 
 Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
 
@@ -24,22 +27,24 @@ const gameEvents = new Map([
     [92, '🔶 Yellow card'],
 ]);
 
-// 1. Create the events array without duplicates
-const eventsSet = [...new Set(gameEvents.values())];
+// 1.
+const events = [...new Set(gameEvents.values())];
+console.log(events);
 
-// 2. Remove yellow card from minute 64
+// 2.
 gameEvents.delete(64);
+console.log(gameEvents);
 
-// 3. Calculate the average time an event happened
-const numberOfEvents = gameEvents.size;
-console.log(`An event happened, on average, every ${90 / numberOfEvents} minutes`);
+// 3.
+let current = 0;
+let sum = 0;
+for (const min of gameEvents.keys()) {
+    sum += min - current;
+    current = min;
+}
+console.log(`An event happened, on average, every ${sum / gameEvents.size} minutes`);
 
-// 4. Log events to the console
-for (const [minute, ev] of gameEvents) {
-    let half = "[FIRST HALF]";
-    if (minute > 45 && minute <= 90)
-        half = "[SECOND HALF]";
-    else if (minute > 90)
-        half = "[EXTRA]";
-    console.log(`${half} ${minute}: ${ev}`);
+// 4.
+for (const [min, event] of gameEvents.entries()) {
+    console.log(`[${min <= 45 ? 'FIRST' : 'SECOND'} HALF] ${min}: ${event}`);
 }

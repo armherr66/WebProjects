@@ -1,4 +1,9 @@
+///////////////////////////////////////
+// Coding Challenge #1
+
 /* 
+We're building a football betting app (soccer for my American friends 😅)!
+
 Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:
 
 1. Create one player array for each team (variables 'players1' and 'players2')
@@ -10,11 +15,13 @@ Suppose we get data from a web service about a certain game (below). In this cha
 7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
 
 TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
+
+GOOD LUCK 😀
 */
 
 const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
+    team1: 'Bayern',
+    team2: 'Borrusia',
     players: [
         [
             'Neuer',
@@ -27,7 +34,7 @@ const game = {
             'Coman',
             'Muller',
             'Gnarby',
-            'Lewandowski',
+            'Lewandowski'
         ],
         [
             'Burki',
@@ -40,42 +47,50 @@ const game = {
             'Hazard',
             'Brandt',
             'Sancho',
-            'Gotze',
-        ],
+            'Gotze'
+        ]
     ],
     score: '4:0',
     scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-    date: 'Nov 9th, 2037',
+    date: 'Nov 19th, 2021',
     odds: {
         team1: 1.33,
         x: 3.25,
-        team2: 6.5,
+        team2: 6.5
+    },
+    printGoals: function (...playerNames) {
+        for (let i = 0; i < playerNames.length; i++) {
+            let totalGoalsPlayer = 0;
+            for (let j = 0; j < this.scored.length; j++)
+                if (playerNames[i] === this.scored[j]) totalGoalsPlayer++;
+            console.log(`${playerNames[i]} scored ${totalGoalsPlayer} goals`);
+        }
     }
 };
 
-// 1. One player array for each team
+// 1.
 const [players1, players2] = game.players;
+console.log(players1, players2);
 
-// 2. Variables for team1
+// 2.
 const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
 
-// 3. Array containing all players of both teams
+// 3.
 const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
 
-// 4. Array with substitutes
+// 4.
 const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final);
 
-// 5. Create one variable for each odd
-const { odds: { team1, x: draw, team2 } } = game;
+// 5.
+const { team1, x: draw, team2 } = game.odds;
+console.log(team1, draw, team2);
 
-// 6. Create a function to print goals
-const printGoals = function (...playerNames) {
-    console.log(`${playerNames.length} goals were scored.`);
-}
+// 6.
+game.printGoals('Hummels', 'Muller', 'Lewandowski', 'Gnarby');
 
-printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
-printGoals(...game.scored);
-
-// 7. Print wich team is more likely to win based on odds
+// 7.
 team1 < team2 && console.log('Team 1 is more likely to win');
 team2 < team1 && console.log('Team 2 is more likely to win');

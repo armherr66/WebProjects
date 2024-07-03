@@ -1,3 +1,6 @@
+///////////////////////////////////////
+// Coding Challenge #2
+
 /* 
 Let's continue with our football betting app!
 
@@ -20,8 +23,8 @@ GOOD LUCK 😀
 */
 
 const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
+    team1: 'Bayern',
+    team2: 'Borrusia',
     players: [
         [
             'Neuer',
@@ -34,7 +37,7 @@ const game = {
             'Coman',
             'Muller',
             'Gnarby',
-            'Lewandowski',
+            'Lewandowski'
         ],
         [
             'Burki',
@@ -47,46 +50,53 @@ const game = {
             'Hazard',
             'Brandt',
             'Sancho',
-            'Gotze',
-        ],
+            'Gotze'
+        ]
     ],
     score: '4:0',
     scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-    date: 'Nov 9th, 2037',
+    date: 'Nov 19th, 2021',
     odds: {
         team1: 1.33,
         x: 3.25,
-        team2: 6.5,
+        team2: 6.5
+    },
+    printGoals: function (...playerNames) {
+        for (let i = 0; i < playerNames.length; i++) {
+            let totalGoalsPlayer = 0;
+            for (let j = 0; j < this.scored.length; j++)
+                if (playerNames[i] === this.scored[j]) totalGoalsPlayer++;
+            console.log(`${playerNames[i]} scored ${totalGoalsPlayer} goals`);
+        }
     }
 };
 
-// 1. Print each player name along with the goal number
-for (let i = 0; i < game.scored.length; i++) {
-    console.log(`Goal ${i + 1}: ${game.scored[i]}`);
+// 1.
+for (const [i, player] of game.scored.entries()) {
+    // console.log(`Goal ${i + 1}: ${player}`);
 }
 
-// 2. Calculate the average odd
-const odds = Object.values(game.odds);
+// 2.
 let sum = 0;
-for (const odd of odds)
+const odds = Object.values(game.odds);
+for (const odd of odds) {
     sum += odd;
-const averageOdd = sum / odds.length;
-console.log(`The average odd is ${averageOdd}`);
+}
+console.log(`Average odd: ${sum / odds.length}`);
 
-// 3. Print the odds to the console
-const oddsEntries = Object.entries(game.odds);
-for (const [winner, odd] of oddsEntries) {
-    if (winner !== "x")
-        console.log(`Odd of victory ${game[winner]}: ${odd}`);
-    else
-        console.log(`Odd of draw: ${odd}`);
+// 3.
+for ([team, odd] of Object.entries(game.odds)) {
+    const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+    console.log(`Odd of ${teamStr}: ${odd}`);
 }
 
-// 4. Create an array with the names of the players who scored
-const scorers = {};
-for (let i = 0; i < game.scored.length; i++) {
-    if (!scorers[game.scored[i]])
-        scorers[game.scored[i]] = 1;
-    else scorers[game.scored[i]] += 1;
+// BONUS.
+const scores = {};
+for (const player of game.scored) {
+    if (scores[player])
+        scores[player]++;
+    else {
+        scores[player] = 1;
+    }
 }
-console.log(scorers);
+console.log(scores);
